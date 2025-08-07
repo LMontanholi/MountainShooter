@@ -10,6 +10,14 @@ class Menu:
         self.rect = self.surf.get_rect(left = 0, top = 0)
 
     def run(self, ):
-        self.window.blit(source=self.surf, dest=self.rect)
-        pygame.display.flip()
-        pass
+        pygame.mixer_music.load('./asset/Menu.mp3')
+        pygame.mixer_music.play(-1)  # o valor -1 é para que a música sempre recomece
+        while True:
+            self.window.blit(source=self.surf, dest=self.rect)
+            pygame.display.flip()
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+
